@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { CurrentUserContext } from "../contexts/NewsExplorerContext";
 import strokeIcon from "../images/white-stroke_icon.png";
@@ -10,12 +10,28 @@ function Navigation() {
   const {
     onPopupOpen,
     userName,
+    setUserName,
     loggedIn,
     isSignupPage,
     isSavedNewsPage,
     onMobileOpen,
     signOut,
   } = useContext(CurrentUserContext);
+
+  const getCurrentUser = () => {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    if (currentUser && currentUser.userName) {
+      return currentUser.userName;
+    }
+
+    return "Nenhum usuário logado";
+  };
+
+  useEffect(() => {
+    const userName = getCurrentUser();
+    setUserName(userName);
+  }, []);
 
   const RenderItensNavigation = () => {
     if (isSignupPage) {

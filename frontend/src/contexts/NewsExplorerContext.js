@@ -46,15 +46,6 @@ export const CurrentUserProvider = ({ children }) => {
   const emailRegex = /\S+@\S+\.\S+/;
 
   useEffect(() => {
-    const getCurrentUser = () => {
-      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-      setUserName(currentUser.userName);
-      return currentUser ? currentUser.userName : "Nenhum usuário logado";
-    };
-    getCurrentUser();
-  }, []);
-
-  useEffect(() => {
     let savedArticles = JSON.parse(localStorage.getItem("savedArticles")) || [];
     setSavedArticles(savedArticles);
     let savedQuery = JSON.parse(localStorage.getItem("query")) || [];

@@ -201,6 +201,7 @@ export const CurrentUserProvider = ({ children }) => {
         setIsModalSuccessOpen(true);
         setUserName("");
       }
+      setUserName("");
     } catch (error) {
       console.log("error register", error);
     }
@@ -254,7 +255,8 @@ export const CurrentUserProvider = ({ children }) => {
 
     setLoading(true);
     setError("");
-    setSearchResults(true);
+    setSearchResults(false);
+    setNotFoundResults(false);
 
     try {
       const news = await fetchNews(query);
@@ -263,6 +265,7 @@ export const CurrentUserProvider = ({ children }) => {
         setNotFoundResults(true);
       } else {
         setArticles(news);
+        setSearchResults(true);
       }
     } catch (err) {
       setError(

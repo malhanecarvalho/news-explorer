@@ -25,7 +25,7 @@ function Navigation() {
       return currentUser.userName;
     }
 
-    return "Nenhum usuário logado";
+    return "";
   };
 
   useEffect(() => {

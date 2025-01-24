@@ -13,7 +13,7 @@ const {DATABASE} = process.env
 
 const app = express();
 app.use(cors());
-app.options('*', cors());
+app.options('https://news-explorer-4fix.onrender.com', 'http://localhost:3000', cors());
 
 async function ensureCollectionsExits() {
   await User.init()
